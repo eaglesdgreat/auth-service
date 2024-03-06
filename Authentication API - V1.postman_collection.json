@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "5eed58f4-df65-4a59-97b6-dfb3374f3957",
+		"name": "Authentication API - V1",
+		"description": "Authentication API that allows user to create an account with their data, and login with their username and password, also they can get the logged in user information with the access token sent.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Test@1234\",\n    \"username\": \"john\",\n    \"phone\": \"07012345676\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "The register request allow for the creation of a new user to the platform."
+					},
+					"response": [
+						{
+							"name": "RegisterExample",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Test@1234\",\n    \"username\": \"john\",\n    \"phone\": \"07012345676\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8080/api/register",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New user created successfully.\",\n    \"status\": true,\n    \"token\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Test@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "The login request allow for the have access to the platform with their credentials."
+					},
+					"response": [
+						{
+							"name": "LoginExample",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Test@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8080/api/login",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New user created successfully.\",\n    \"status\": true,\n    \"token\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "UsersProfile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4Zjc4NGFkLTkwYjAtNDdlMi1hYjE4LTExNTZkYzk4MjdmMyIsImVtYWlsIjoiam9obmRvZUBnbWFpbC5jb20iLCJuYW1lIjoiSm9obiBEb2UiLCJwaG9uZSI6IjA3MDEyMzQ1Njc2IiwidXNlcm5hbWUiOiJqb2huIiwiZXhwIjoxNzEwMzIxMDUyLCJpYXQiOjE3MDk3MTYyNTJ9.Gfx1MOd96CkI5zh3MPQWIDpfJaJ4R7bnZpcUcAw8sPw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						},
+						"description": "Get user data using access token provided in header"
+					},
+					"response": [
+						{
+							"name": "UsersProfileExample",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4Zjc4NGFkLTkwYjAtNDdlMi1hYjE4LTExNTZkYzk4MjdmMyIsImVtYWlsIjoiam9obmRvZUBnbWFpbC5jb20iLCJuYW1lIjoiSm9obiBEb2UiLCJwaG9uZSI6IjA3MDEyMzQ1Njc2IiwidXNlcm5hbWUiOiJqb2huIiwiZXhwIjoxNzEwMzIxMDUyLCJpYXQiOjE3MDk3MTYyNTJ9.Gfx1MOd96CkI5zh3MPQWIDpfJaJ4R7bnZpcUcAw8sPw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/users/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4Zjc4NGFkLTkwYjAtNDdlMi1hYjE4LTExNTZkYzk4MjdmMyIsImVtYWlsIjoiam9obmRvZUBnbWFpbC5jb20iLCJuYW1lIjoiSm9obiBEb2UiLCJwaG9uZSI6IjA3MDEyMzQ1Njc2IiwidXNlcm5hbWUiOiJqb2huIiwiZXhwIjoxNzEwMzIxMDUyLCJpYXQiOjE3MDk3MTYyNTJ9.Gfx1MOd96CkI5zh3MPQWIDpfJaJ4R7bnZpcUcAw8sPw",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8080/api/users/profile",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully.\",\n    \"status\": true,\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"username\": \"john\",\n        \"email\": \"johndoe@gmail.com\",\n        \"phone\": \"07012345676\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "The user collection allows for registering a user, login into the new user account and getting the user data info with their access token."
+		}
+	]
+}

@@ -1,0 +1,9 @@
+{
+  "server": {
+    "port": 8080
+  },
+  "security": {
+    "expiresIn": 7,
+    "expiresDays": "7d"
+  }
+}
